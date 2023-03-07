@@ -18,5 +18,8 @@
   "homepage": "https://github.com/melvincurinier/FrontMDL#readme",
   "devDependencies": {
     "eslint": "^8.35.0"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
   }
 }
