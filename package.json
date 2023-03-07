@@ -1,0 +1,22 @@
+{
+  "name": "frontmdl",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/melvincurinier/FrontMDL.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/melvincurinier/FrontMDL/issues"
+  },
+  "homepage": "https://github.com/melvincurinier/FrontMDL#readme",
+  "devDependencies": {
+    "eslint": "^8.35.0"
+  }
+}
