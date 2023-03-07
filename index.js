@@ -4,7 +4,9 @@ const port = 3000;
 
 function main(){
     app.get("/", (req, res) => {
-        res.send("Hello World !");
+        const currentDate = new Date();
+        console.log("page called at " + currentDate);
+        res.send("Hello World ! Nous sommes le " + currentDate);
     });
 
     app.listen(port, function(){
