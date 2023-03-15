@@ -1,7 +1,5 @@
 const fs = require("fs");
-const proc = require("process")
 
-require("dotenv").config();
 const filename = "./data/customers.json";
 
 let dataLayer = {
@@ -25,7 +23,22 @@ let dataLayer = {
     },
 
     getCustomer: function (number, page) {
-        return;
+        const data = fs.readFileSync(filename);
+
+        let customers = JSON.parse(data);
+
+        const total = customers.length;
+
+        if(number && page){
+            customers = customers.slice((page - 1) * number, page * number);
+        }
+
+        const result = {
+            total : total,
+            result : customers
+        };
+
+        return result;
     }
 }
 
