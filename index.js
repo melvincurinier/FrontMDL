@@ -18,11 +18,12 @@ function ajouterClient(_email, _prenom, _nom, _societe, _pays) {
     clients.push(client);
 }
 
-const apiServ = require("./presentation/apiPres");
-const port2 = 3001;
-
-function main2() {
-    apiServ.start(port2);
+function main() {
+    app.use(express.static("public"));
+    
+    app.listen(port, function(){
+        console.log(`Example app listening on port ${port}`);
+    });
 }
 
-main2();
+main();
