@@ -1,40 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Création client</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script src="./creation_client.js"></script>
 </head>
+
 <body>
     <div>
         <button onclick="window.location.href='./index.html';">Retour</button>
         <h1>Ajouter un client</h1>
     </div>
-    <form action="">
+    <div id="form">
         <div>
             <label for="email">Email :</label>
-            <input type="email" name="email" required>
+            <input type="email" id="email" name="email" required>
         </div>
         <div>
             <label for="first">Firstname :</label>
-            <input type="text" name="first" required>
+            <input type="text" id="first" name="first" required>
         </div>
         <div>
             <label for="last">Lastname :</label>
-            <input type="text" name="last" required>
+            <input type="text" id="last" name="last" required>
         </div>
         <div>
             <label for="company">Company :</label>
-            <input type="text" name="company" required>
+            <input type="text" id="company" name="company" required>
         </div>
         <div>
             <label for="country">Country :</label>
-            <input type="text" name="country" required>
+            <input type="text" id="country" name="country" required>
         </div>
         <div>
-            <input type="submit" value="Ajouter">
+            <button type="submit" onclick="submitForm()">Ajouter</button>
         </div>
-    </form>
+    </div>
 </body>
+
 </html>
