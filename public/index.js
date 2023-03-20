@@ -1,7 +1,6 @@
-function getData() {
-    const url = "http://localhost:3001/api/customers";
+function getData(number, page) {
+    const url = "http://localhost:3001/api/customers?number="+ number + "&page=" + page;
     
-
     return new Promise((resolve, reject) => {
         $.get(url, {}).done(function (data) {
             resolve(data.result);
@@ -9,8 +8,8 @@ function getData() {
     });
 }
 
-async function getCustomersOnTable(){
-    const customers = await getData();
+async function getCustomersOnTable(number, page){
+    const customers = await getData(number, page);
     
     const tbody = document.querySelector("#bodyTable");
     customers.forEach(element => {
@@ -30,5 +29,9 @@ async function getCustomersOnTable(){
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-    getCustomersOnTable();
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const number = urlParams.get('number');
+    const page = urlParams.get('page');
+    getCustomersOnTable(number, page);
 });

@@ -1,3 +1,4 @@
+
 function remplirChampsCustomer(customer){
     let email = document.getElementById("email");
     let first = document.getElementById("first");
