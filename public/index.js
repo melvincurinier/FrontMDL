@@ -1,5 +1,5 @@
-function getData(number, page) {
-    const url = "http://localhost:3001/api/customers?number="+ number + "&page=" + page;
+function getData() {
+    const url = "http://localhost:3001/api/customers";
     
     return new Promise((resolve, reject) => {
         $.get(url, {}).done(function (data) {
@@ -8,8 +8,8 @@ function getData(number, page) {
     });
 }
 
-async function getCustomersOnTable(number, page){
-    const customers = await getData(number, page);
+async function getCustomersOnTable(){
+    const customers = await getData();
     
     const tbody = document.querySelector("#bodyTable");
     customers.forEach(element => {
@@ -29,9 +29,5 @@ async function getCustomersOnTable(number, page){
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const number = urlParams.get('number');
-    const page = urlParams.get('page');
-    getCustomersOnTable(number, page);
+    getCustomersOnTable();
 });
