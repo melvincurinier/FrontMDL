@@ -22,7 +22,8 @@ async function getCustomersOnTable(){
         <td>${element.company}</td>
         <td>${element.country}</td>
         <td>${element.created_at}</td>
-        <button onclick="location.href='./modification_client.html?id=${element.id}'">Modifier</button>
+        <td><button onclick="location.href='./modification_client.html?id=${element.id}'">Modifier</button></td>
+        <td><button onclick="deleteCustomer(${element.id})">Supprimer</button></td>
         `;
         tbody.appendChild(tr);
     });
@@ -31,3 +32,20 @@ async function getCustomersOnTable(){
 window.addEventListener('DOMContentLoaded', () => {
     getCustomersOnTable();
 });
+
+function deleteCustomer(id){
+    fetch('http://localhost:3001/api/deleteCustomer?id=' + id, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Réponse de l\'API:', data);
+        })
+        .catch(error => {
+            console.error('Erreur:', error);
+        });
+    window.location.reload();
+}
