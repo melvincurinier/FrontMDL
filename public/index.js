@@ -1,6 +1,6 @@
-function getData() {
-    const url = "http://localhost:3001/api/customers";
-    
+function getData(number, page) {
+    const url = "http://localhost:3001/api/customers?number=" + number + "&page=" + page;
+
     return new Promise((resolve, reject) => {
         $.get(url, {}).done(function (data) {
             resolve(data.result);
@@ -8,9 +8,9 @@ function getData() {
     });
 }
 
-async function getCustomersOnTable(){
-    const customers = await getData();
-    
+async function getCustomersOnTable(number, page) {
+    const customers = await getData(number, page);
+
     const tbody = document.querySelector("#bodyTable");
     customers.forEach(element => {
         const tr = document.createElement("tr");
@@ -30,10 +30,36 @@ async function getCustomersOnTable(){
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-    getCustomersOnTable();
+    const urlParams = new URLSearchParams(window.location.search);
+    let number = urlParams.get("number") || 10;
+    let page = urlParams.get("page") || 1;
+
+    getCustomersOnTable(number, page);
+
+    const prevButton = document.querySelector("#prevButton");
+    const nextButton = document.querySelector("#nextButton");
+
+    prevButton.addEventListener("click", function () {
+        if (page > 1) {
+            page--;
+        }
+        updateURLParams(number, page);
+    });
+
+    nextButton.addEventListener("click", function () {
+        page++;
+        updateURLParams(number, page);
+    });
 });
 
-function deleteCustomer(id){
+function updateURLParams(number, page) {
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set("number", number);
+    urlParams.set("page", page);
+    window.location.search = urlParams.toString();
+}
+
+function deleteCustomer(id) {
     fetch('http://localhost:3001/api/deleteCustomer?id=' + id, {
         method: 'DELETE',
         headers: {
