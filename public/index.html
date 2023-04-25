@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Front</title>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <script src="./index.js"></script>
 </head>
 
@@ -15,7 +16,12 @@
         <h1>Liste des clients</h1>
         <button onclick="window.location.href='./creation_client.html';">Ajouter un client</button>
     </div>
+    <div>
+        <button id="prevButton">Précédent</button>
+        <button id="nextButton">Suivant</button>
+    </div>
     <table>
+        </thead>
         <thead>
             <tr>
                 <th>ID</th>
